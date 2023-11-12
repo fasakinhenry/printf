@@ -7,4 +7,6 @@
 
 /* custom putchar function */
 int _putchar(char c);
+/* Main printf function */
+int _printf(const char *format, ...);
 #endif

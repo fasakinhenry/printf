@@ -6,6 +6,8 @@
  * Return: returns the value of the word count
 */
 
+int _printf(const char *format, ...);
+
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -52,14 +54,3 @@ int _printf(const char *format, ...)
 	return (count);
 }
 
-/**
- * main - main function to test our printf function
-*/
-
-int main()
-{
-	int characters_printed = _printf("The character is %c and the string is %s. This is a %% sign.\n", 'A', "Hello, World!");
-
-	printf("\nTotal characters printed: %d\n", characters_printed);
-	return (0);
-}
