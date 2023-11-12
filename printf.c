@@ -28,6 +28,8 @@ void print_number(int num)
 	}
 }
 
+int _printf(const char *format, ...);
+
 /**
  * _printf - A custom printf function
  * @format: This is the format of the text to be printed
