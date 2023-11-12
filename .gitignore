@@ -1,1 +1,5 @@
+# Remove all main.c test files
 main.c
+
+# Removve all the executable files
+*.out
