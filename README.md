@@ -83,7 +83,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c </code>
 
 ``` c
 
-alex@ubuntu:~/c/printf$ cat main.c 
+alex@ubuntu:~/c/printf$ cat main.c
  #include <limits.h>
  #include <stdio.h>
  #include "main.h"
