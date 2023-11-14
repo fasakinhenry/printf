@@ -131,7 +131,7 @@ int _printf(const char *format, ...)
 			}
 			if (*format == 'c')
 			{
-				char c = va_arg(args, int);
+				int c = va_arg(args, int);
 
 				_putchar(c);
 				count++;
