@@ -47,20 +47,22 @@ int print_binary(unsigned int num)
 }
 
 /**
- * print_number_unsigned - Print an unsigned integer
+ * print_number_unsign - Print an unsigned integer
  * @num: The unsigned integer to be printed
- * @base: The base for conversion (8 for octal, 10 for decimal, 16 for hexadecimal)
- * @is_upper: Flag to indicate uppercase hexadecimal (1 for uppercase, 0 for lowercase)
+ * @base: The base for conversion
+ * (8 for octal, 10 for decimal, 16 for hexadecimal)
+ * @is_upper: Flag to indicate uppercase hexadecimal
+ * (1 for uppercase, 0 for lowercase)
  * Return: returns the count of printed characters
  */
-int print_number_unsigned(unsigned int num, int base, int is_upper)
+int print_number_unsign(unsigned int num, int base, int is_upper)
 {
 	int count = 0;
 	int remainder = num % base;
 
 	if (num / base != 0)
 	{
-		count += print_number_unsigned(num / base, base, is_upper);
+		count += print_number_unsign(num / base, base, is_upper);
 	}
 
 	if (remainder < 10)
@@ -162,22 +164,26 @@ int _printf(const char *format, ...)
 			else if (*format == 'u')
 			{
 				unsigned int num = va_arg(args, unsigned int);
-				count += print_number_unsigned(num, 10, 0);
+
+				count += print_number_unsign(num, 10, 0);
 			}
 			else if (*format == 'o')
 			{
 				unsigned int num = va_arg(args, unsigned int);
-				count += print_number_unsigned(num, 8, 0);
+
+				count += print_number_unsign(num, 8, 0);
 			}
 			else if (*format == 'x')
 			{
 				unsigned int num = va_arg(args, unsigned int);
-				count += print_number_unsigned(num, 16, 0);
+
+				count += print_number_unsign(num, 16, 0);
 			}
 			else if (*format == 'X')
 			{
 				unsigned int num = va_arg(args, unsigned int);
-				count += print_number_unsigned(num, 16, 1);
+
+				count += print_number_unsign(num, 16, 1);
 			}
 			else
 			{
