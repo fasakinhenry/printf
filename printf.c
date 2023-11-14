@@ -3,6 +3,7 @@
 /**
  * print_number - This is a custom function to print numbers
  * @num: The number to be printed
+ * Return: value of the count
  */
 int print_number(int num)
 {
@@ -75,6 +76,25 @@ int print_number_unsign(unsigned int num, int base, int is_upper)
 	}
 
 	count++;
+
+	return (count);
+}
+
+/**
+ * print_non_printable - Print non-printable characters in the format \xHH
+ * @c: The character to be printed
+ * Return: returns the count of printed characters
+ */
+int print_non_printable(char c)
+{
+	int count = 0;
+	char hex_digits[] = "0123456789ABCDEF";
+
+	_putchar('\\');
+	_putchar('x');
+	_putchar(hex_digits[(c >> 4) & 0xF]);
+	_putchar(hex_digits[c & 0xF]);
+	count += 4;
 
 	return (count);
 }
@@ -184,6 +204,38 @@ int _printf(const char *format, ...)
 				unsigned int num = va_arg(args, unsigned int);
 
 				count += print_number_unsign(num, 16, 1);
+			}
+			else if (*format == 'S')
+			{
+				char *str = va_arg(args, char *);
+
+				if (str == NULL)
+				{
+					char *nullStr = "(NULL)";
+
+					while (*nullStr != '\0')
+					{
+						_putchar(*nullStr);
+						nullStr++;
+						count++;
+					}
+				}
+				else
+				{
+					while (*str != '\0')
+					{
+						if (*str >= 32 && *str < 127)
+						{
+							_putchar(*str);
+							count++;
+						}
+						else
+						{
+							count += print_non_printable(*str);
+						}
+						str++;
+					}
+				}
 			}
 			else
 			{
