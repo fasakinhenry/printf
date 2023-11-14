@@ -11,4 +11,5 @@ int _putchar(char c);
 int print_number(int num);
 /* Main printf function */
 int _printf(const char *format, ...);
+int print_pointer(void *ptr);
 #endif

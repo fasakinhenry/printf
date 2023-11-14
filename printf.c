@@ -237,6 +237,12 @@ int _printf(const char *format, ...)
 					}
 				}
 			}
+			else if (*format == 'p')
+			{
+				void *ptr = va_arg(args, void *);
+
+				count += print_pointer(ptr);
+			}
 			else
 			{
 				_putchar('%');
