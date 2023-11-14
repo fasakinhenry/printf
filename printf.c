@@ -142,13 +142,8 @@ int _printf(const char *format, ...)
 
 				if (str == NULL)
 				{
-					_putchar('(');
-					_putchar('N');
-					_putchar('U');
-					_putchar('L');
-					_putchar('L');
-					_putchar(')');
-					count += 6;
+					str = "null";
+					count++;
 				}
 				else
 				{
