@@ -3,7 +3,7 @@
 /**
  * print_number - This is a custom function to print numbers
  * @num: The number to be printed
-*/
+ */
 void print_number(int num)
 {
 	int digits = 1;
@@ -88,6 +88,12 @@ int _printf(const char *format, ...)
 					count++;
 					temp /= 10;
 				}
+			}
+			else
+			{
+				_putchar('%');
+				_putchar(*format);
+				count += 2;
 			}
 		}
 		else
