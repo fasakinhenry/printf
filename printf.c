@@ -170,6 +170,12 @@ int _printf(const char *format, ...)
 			{
 				int num = va_arg(args, int);
 
+				if (num < 0)
+				{
+					_putchar('-');
+					count++;
+					num = -num;
+				}
 				count += print_number(num);
 			}
 			else if (*format == 'b')
