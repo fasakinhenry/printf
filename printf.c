@@ -23,7 +23,7 @@ int print_number(int num)
 	_putchar(num % 10 + '0');
 	count++;
 
-	return count;
+	return (count);
 }
 
 /**
@@ -125,6 +125,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'b')
 			{
 				unsigned int binary_num = va_arg(args, unsigned int);
+
 				count += print_binary(binary_num);
 			}
 			else
