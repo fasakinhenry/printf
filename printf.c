@@ -129,10 +129,6 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			else if (*format == '\0')
-			{
-				return (-1);
-			}
 			if (*format == 'c')
 			{
 				int c = va_arg(args, int);
