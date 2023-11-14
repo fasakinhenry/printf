@@ -65,11 +65,24 @@ int _printf(const char *format, ...)
 			{
 				char *str = va_arg(args, char *);
 
-				while (*str != '\0')
+				if (str == NULL)
 				{
-					_putchar(*str);
-					str++;
-					count++;
+					_putchar('(');
+					_putchar('N');
+					_putchar('U');
+					_putchar('L');
+					_putchar('L');
+					_putchar(')');
+					count += 6;
+				}
+				else
+				{
+					while (*str != '\0')
+					{
+						_putchar(*str);
+						str++;
+						count++;
+					}
 				}
 			}
 			else if (*format == '%')
