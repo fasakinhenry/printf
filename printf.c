@@ -206,33 +206,7 @@ int _printf(const char *format, ...)
 			{
 				char *str = va_arg(args, char *);
 
-				if (str == NULL)
-				{
-					char *nullStr = "(NULL)";
-
-					while (*nullStr != '\0')
-					{
-						_putchar(*nullStr);
-						nullStr++;
-						count++;
-					}
-				}
-				else
-				{
-					while (*str != '\0')
-					{
-						if (*str >= 32 && *str < 127)
-						{
-							_putchar(*str);
-							count++;
-						}
-						else
-						{
-							count += print_non_printable(*str);
-						}
-						str++;
-					}
-				}
+				string_handler(str, &count);
 			}
 			else if (*format == 'p')
 			{
