@@ -4,28 +4,26 @@
  * print_number - This is a custom function to print numbers
  * @num: The number to be printed
  */
-void print_number(int num)
+int print_number(int num)
 {
-	int digits = 1;
-	int temp = num;
+	int count = 0;
 
 	if (num < 0)
 	{
 		_putchar('-');
+		count++;
 		num = -num;
 	}
 
-	while (temp /= 10)
+	if (num / 10 != 0)
 	{
-		digits *= 10;
+		count += print_number(num / 10);
 	}
 
-	while (digits >= 1)
-	{
-		_putchar((num / digits) + '0');
-		num %= digits;
-		digits /= 10;
-	}
+	_putchar(num % 10 + '0');
+	count++;
+
+	return count;
 }
 
 int _printf(const char *format, ...);
@@ -101,14 +99,8 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
 			{
 				int num = va_arg(args, int);
-				int temp = num;
 
-				print_number(num);
-				while (temp != 0)
-				{
-					count++;
-					temp /= 10;
-				}
+				count += print_number(num);
 			}
 			else
 			{

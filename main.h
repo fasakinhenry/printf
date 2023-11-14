@@ -8,7 +8,7 @@
 /* custom putchar function */
 int _putchar(char c);
 /* Custom function to print number*/
-void print_number(int num);
+int print_number(int num);
 /* Main printf function */
 int _printf(const char *format, ...);
 #endif
