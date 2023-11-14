@@ -143,7 +143,6 @@ int _printf(const char *format, ...)
 				if (str == NULL)
 				{
 					str = "null";
-					count++;
 				}
 				else
 				{
