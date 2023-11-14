@@ -5,8 +5,10 @@
  * @num: The number to be printed
  * Return: value of the count
  */
-int print_number(int num, int count)
+int print_number(int num)
 {
+	int count = 0;
+
 	if (num < 0)
 	{
 		_putchar('-');
@@ -14,14 +16,15 @@ int print_number(int num, int count)
 		num = -num;
 	}
 
-	if (num / 10)
+	if (num / 10 != 0)
 	{
-		count += print_number(num / 10, count);
+		count += print_number(num / 10);
 	}
 
 	_putchar(num % 10 + '0');
+	count++;
 
-	return (count + 1);
+	return (count);
 }
 
 /**
@@ -167,7 +170,7 @@ int _printf(const char *format, ...)
 			{
 				int num = va_arg(args, int);
 
-				count += print_number(num, count);
+				count += print_number(num);
 			}
 			else if (*format == 'b')
 			{
