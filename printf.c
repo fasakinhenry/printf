@@ -26,6 +26,26 @@ int print_number(int num)
 	return count;
 }
 
+/**
+ * print_binary - Print an unsigned integer in binary
+ * @num: The unsigned integer to be printed
+ * Return: returns the count of printed characters
+ */
+int print_binary(unsigned int num)
+{
+	int count = 0;
+
+	if (num / 2 != 0)
+	{
+		count += print_binary(num / 2);
+	}
+
+	_putchar(num % 2 + '0');
+	count++;
+
+	return (count);
+}
+
 int _printf(const char *format, ...);
 
 /**
@@ -101,6 +121,11 @@ int _printf(const char *format, ...)
 				int num = va_arg(args, int);
 
 				count += print_number(num);
+			}
+			else if (*format == 'b')
+			{
+				unsigned int binary_num = va_arg(args, unsigned int);
+				count += print_binary(binary_num);
 			}
 			else
 			{
