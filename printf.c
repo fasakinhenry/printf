@@ -8,6 +8,7 @@
 int print_number(int num)
 {
 	int count = 0;
+	int divisor = 1;
 
 	if (num < 0)
 	{
@@ -16,13 +17,20 @@ int print_number(int num)
 		num = -num;
 	}
 
-	if (num / 10 != 0)
+	while (num / divisor > 9)
 	{
-		count += print_number(num / 10);
+		divisor *= 10;
 	}
 
-	_putchar(num % 10 + '0');
-	count++;
+	while (divisor != 0)
+	{
+		int digit = num / divisor;
+
+		_putchar(digit + '0');
+		count++;
+		num %= divisor;
+		divisor /= 10;
+	}
 
 	return (count);
 }
@@ -170,12 +178,6 @@ int _printf(const char *format, ...)
 			{
 				int num = va_arg(args, int);
 
-				if (num < 0)
-				{
-					_putchar('-');
-					count++;
-					num = -num;
-				}
 				count += print_number(num);
 			}
 			else if (*format == 'b')
