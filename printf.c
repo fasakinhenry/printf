@@ -131,7 +131,7 @@ int _printf(const char *format, ...)
 			}
 			if (*format == 'c')
 			{
-				int c = va_arg(args, int);
+				char c = va_arg(args, int);
 
 				_putchar(c);
 				count++;
@@ -142,7 +142,14 @@ int _printf(const char *format, ...)
 
 				if (str == NULL)
 				{
+					_putchar('(');
+					_putchar('n');
+					_putchar('u');
+					_putchar('l');
+					_putchar('l');
+					_putchar(')');
 					str = "null";
+					count += 6;
 				}
 				else
 				{
