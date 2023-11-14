@@ -8,5 +8,13 @@
 
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	char buffer[1024];
+
+	buffer[0] = c;
+	if ((write(STDOUT_FILENO, buffer, 1) == -1))
+	{
+		return (-1);
+	}
+
+	return (1);
 }
