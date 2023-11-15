@@ -39,6 +39,7 @@ int print_hex_address(unsigned long int address)
 	{
 		unsigned long int divisor = 1;
 		int leading_zeros = 0;
+
 		_putchar('0');
 		_putchar('x');
 		count += 2;
@@ -47,7 +48,6 @@ int print_hex_address(unsigned long int address)
 		{
 			divisor *= 16;
 		}
-
 		while (divisor > 0)
 		{
 			int digit = address / divisor;
@@ -63,8 +63,7 @@ int print_hex_address(unsigned long int address)
 			divisor /= 16;
 		}
 	}
-
-	return count;
+	return (count);
 }
 
 /**
@@ -94,5 +93,5 @@ int print_pointer(void *ptr)
 		count += print_hex_address(address);
 	}
 
-	return count;
+	return (count);
 }
