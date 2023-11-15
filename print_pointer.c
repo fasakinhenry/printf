@@ -61,10 +61,6 @@ int print_pointer(void *ptr)
 	int count = 0;
 	unsigned long int address = (unsigned long int)ptr;
 
-	_putchar('0');
-	_putchar('x');
-	count += 2;
-
 	if (address == 0)
 	{
 		_putchar('(');
@@ -76,6 +72,9 @@ int print_pointer(void *ptr)
 	}
 	else
 	{
+		_putchar('0');
+		_putchar('x');
+		count += 2;
 		count += print_hex_address(address);
 	}
 
