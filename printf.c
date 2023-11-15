@@ -8,29 +8,26 @@
 int print_number(int num)
 {
 	int count = 0;
-	int divisor = 1;
+	unsigned int unum;
 
 	if (num < 0)
 	{
 		_putchar('-');
 		count++;
-		num = -num;
+		unum = -num;
 	}
-
-	while (num / divisor > 9)
+	else
 	{
-		divisor *= 10;
+		unum = num;
 	}
 
-	while (divisor != 0)
+	if (unum / 10 != 0)
 	{
-		int digit = num / divisor;
-
-		_putchar(digit + '0');
-		count++;
-		num %= divisor;
-		divisor /= 10;
+		count += print_number(unum / 10);
 	}
+
+	_putchar(unum % 10 + '0');
+	count++;
 
 	return (count);
 }

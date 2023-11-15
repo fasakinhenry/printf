@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <limits.h>
 
 /* custom putchar function */
 int _putchar(char c);
