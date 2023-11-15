@@ -3,9 +3,10 @@
 /**
  * print_number - This is a custom function to print numbers
  * @num: The number to be printed
+ * @print_sign: Flag to indicate whether to print the sign (+, space)
  * Return: value of the count
  */
-int print_number(int num)
+int print_number(int num, int print_sign, int print_hash)
 {
 	int count = 0;
 	unsigned int unum;
@@ -18,12 +19,23 @@ int print_number(int num)
 	}
 	else
 	{
+		if (print_sign == 1)
+		{
+			_putchar('+');
+			count++;
+		}
+		else if (print_sign == 2)
+		{
+			_putchar(' ');
+			count++;
+		}
+
 		unum = num;
 	}
 
 	if (unum / 10 != 0)
 	{
-		count += print_number(unum / 10);
+		count += print_number(unum / 10, 0, print_hash);
 	}
 
 	_putchar(unum % 10 + '0');
@@ -129,7 +141,21 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			int print_sign = 0;
+			int print_hash = 0;
 			format++;
+
+			while (*format == '+' || *format == ' ' || *format == '#')
+			{
+				if (*format == '+')
+					print_sign = 1;
+				else if (*format == ' ')
+					print_sign = 2;
+				else if (*format == '#')
+					print_hash = 1;
+
+				format++;
+			}
 			if (*format == ' ')
 			{
 				return (-1);
@@ -174,8 +200,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
 			{
 				int num = va_arg(args, int);
-
-				count += print_number(num);
+				count += print_number(num, print_sign, print_hash);
 			}
 			else if (*format == 'b')
 			{
