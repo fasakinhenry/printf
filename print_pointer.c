@@ -25,30 +25,46 @@ char hex_digit(int digit)
 int print_hex_address(unsigned long int address)
 {
 	int count = 0;
-	unsigned long int divisor = 1;
-	int leading_zeros = 0;
 
-	while (divisor <= address / 16)
+	if (address == 0)
 	{
-		divisor *= 16;
+		_putchar('(');
+		_putchar('n');
+		_putchar('i');
+		_putchar('l');
+		_putchar(')');
+		count += 5;
 	}
-
-	while (divisor > 0)
+	else
 	{
-		int digit = address / divisor;
+		unsigned long int divisor = 1;
+		int leading_zeros = 0;
+		_putchar('0');
+		_putchar('x');
+		count += 2;
 
-		if (digit > 0 || leading_zeros || divisor == 1)
+		while (divisor <= address / 16)
 		{
-			_putchar(hex_digit(digit));
-			count++;
-			leading_zeros = 1;
+			divisor *= 16;
 		}
 
-		address %= divisor;
-		divisor /= 16;
+		while (divisor > 0)
+		{
+			int digit = address / divisor;
+
+			if (digit > 0 || leading_zeros || divisor == 1)
+			{
+				_putchar(hex_digit(digit));
+				count++;
+				leading_zeros = 1;
+			}
+
+			address %= divisor;
+			divisor /= 16;
+		}
 	}
 
-	return (count);
+	return count;
 }
 
 /**
@@ -61,21 +77,22 @@ int print_pointer(void *ptr)
 	int count = 0;
 	unsigned long int address = (unsigned long int)ptr;
 
-	_putchar('0');
-	_putchar('x');
-	count += 2;
-
-	if (address == 0)
+	if (ptr == NULL)
 	{
-		_putchar('0');
-		count++;
+		_putchar('(');
+		_putchar('n');
+		_putchar('i');
+		_putchar('l');
+		_putchar(')');
+		count += 5;
 	}
 	else
 	{
+		_putchar('0');
+		_putchar('x');
+		count += 2;
 		count += print_hex_address(address);
 	}
 
-	return (count);
+	return count;
 }
-
-
