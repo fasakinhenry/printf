@@ -67,8 +67,12 @@ int print_pointer(void *ptr)
 
 	if (address == 0)
 	{
-		_putchar('0');
-		count++;
+		_putchar('(');
+		_putchar('n');
+		_putchar('i');
+		_putchar('l');
+		_putchar(')');
+		count += 5;
 	}
 	else
 	{
@@ -77,5 +81,3 @@ int print_pointer(void *ptr)
 
 	return (count);
 }
-
-
