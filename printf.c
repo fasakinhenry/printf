@@ -4,14 +4,12 @@
  * print_number - This is a custom function to print numbers
  * @num: The number to be printed
  * @print_sign: Flag to indicate whether to print the sign (+, space)
- * @print_hash: Flag to indicate whether to print the hash (#)
- * @length_mod: Length modifier for the number (l, h, none)
  * Return: value of the count
  */
-int print_number(long num, int print_sign, int print_hash, char length_mod)
+int print_number(int num, int print_sign, int print_hash)
 {
 	int count = 0;
-	unsigned long unum;
+	unsigned int unum;
 
 	if (num < 0)
 	{
@@ -37,7 +35,7 @@ int print_number(long num, int print_sign, int print_hash, char length_mod)
 
 	if (unum / 10 != 0)
 	{
-		count += print_number(unum / 10, 0, print_hash, length_mod);
+		count += print_number(unum / 10, 0, print_hash);
 	}
 
 	_putchar(unum % 10 + '0');
@@ -51,7 +49,7 @@ int print_number(long num, int print_sign, int print_hash, char length_mod)
  * @num: The unsigned integer to be printed
  * Return: returns the count of printed characters
  */
-int print_binary(unsigned long num)
+int print_binary(unsigned int num)
 {
 	int count = 0;
 
@@ -75,7 +73,7 @@ int print_binary(unsigned long num)
  * (1 for uppercase, 0 for lowercase)
  * Return: returns the count of printed characters
  */
-int print_number_unsign(unsigned long num, int base, int is_upper)
+int print_number_unsign(unsigned int num, int base, int is_upper)
 {
 	int count = 0;
 	int remainder = num % base;
@@ -125,6 +123,7 @@ int _printf(const char *format, ...);
  * @format: This is the format of the text to be printed
  * Return: returns the value of the word count
  */
+
 int _printf(const char *format, ...)
 {
 	int count = 0;
@@ -144,12 +143,9 @@ int _printf(const char *format, ...)
 		{
 			int print_sign = 0;
 			int print_hash = 0;
-			char length_mod = '\0';
-
 			format++;
 
-			while (*format == '+' ||
-			*format == ' ' || *format == '#' || *format == 'l' || *format == 'h')
+			while (*format == '+' || *format == ' ' || *format == '#')
 			{
 				if (*format == '+')
 					print_sign = 1;
@@ -157,17 +153,13 @@ int _printf(const char *format, ...)
 					print_sign = 2;
 				else if (*format == '#')
 					print_hash = 1;
-				else if (*format == 'l' || *format == 'h')
-					length_mod = *format;
 
 				format++;
 			}
-
 			if (*format == ' ')
 			{
 				return (-1);
 			}
-
 			if (*format == 'c')
 			{
 				char c = va_arg(args, int);
@@ -207,37 +199,36 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'd' || *format == 'i')
 			{
-				long num = va_arg(args, long);
-
-				count += print_number(num, print_sign, print_hash, length_mod);
+				int num = va_arg(args, int);
+				count += print_number(num, print_sign, print_hash);
 			}
 			else if (*format == 'b')
 			{
-				unsigned long binary_num = va_arg(args, unsigned long);
+				unsigned int binary_num = va_arg(args, unsigned int);
 
 				count += print_binary(binary_num);
 			}
 			else if (*format == 'u')
 			{
-				unsigned long num = va_arg(args, unsigned long);
+				unsigned int num = va_arg(args, unsigned int);
 
 				count += print_number_unsign(num, 10, 0);
 			}
 			else if (*format == 'o')
 			{
-				unsigned long num = va_arg(args, unsigned long);
+				unsigned int num = va_arg(args, unsigned int);
 
 				count += print_number_unsign(num, 8, 0);
 			}
 			else if (*format == 'x')
 			{
-				unsigned long num = va_arg(args, unsigned long);
+				unsigned int num = va_arg(args, unsigned int);
 
 				count += print_number_unsign(num, 16, 0);
 			}
 			else if (*format == 'X')
 			{
-				unsigned long num = va_arg(args, unsigned long);
+				unsigned int num = va_arg(args, unsigned int);
 
 				count += print_number_unsign(num, 16, 1);
 			}
