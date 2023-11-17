@@ -228,7 +228,14 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'X')
 			{
-				unsigned int num = va_arg(args, unsigned int);
+				unsigned long num = va_arg(args, unsigned long);
+
+				if (print_hash && num != 0)
+				{
+					_putchar('0');
+					_putchar('X');
+					count += 2;
+				}
 
 				count += print_number_unsign(num, 16, 1);
 			}
