@@ -143,6 +143,7 @@ int _printf(const char *format, ...)
 		{
 			int print_sign = 0;
 			int print_hash = 0;
+
 			format++;
 
 			while (*format == '+' || *format == ' ' || *format == '#')
@@ -200,6 +201,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
 			{
 				int num = va_arg(args, int);
+
 				count += print_number(num, print_sign, print_hash);
 			}
 			else if (*format == 'b')
@@ -237,7 +239,8 @@ int _printf(const char *format, ...)
 					count += 2;
 				}
 
-				count += print_number_unsign(num, 16, 1);
+				if (num != 0)
+					count += print_number_unsign(num, 16, 1);
 			}
 			else if (*format == 'S')
 			{
