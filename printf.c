@@ -239,8 +239,7 @@ int _printf(const char *format, ...)
 					count += 2;
 				}
 
-				if (num != 0)
-					count += print_number_unsign(num, 16, 1);
+				count += print_number_unsign(num, 16, 1);
 			}
 			else if (*format == 'S')
 			{
