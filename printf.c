@@ -16,8 +16,8 @@ int print_number(long num, int print_sign, int print_hash, char length_mod)
 	if (num < 0)
 	{
 		_putchar('-');
-		unum = -num;
 		count++;
+		unum = -num;
 	}
 	else
 	{
@@ -149,7 +149,7 @@ int _printf(const char *format, ...)
 			format++;
 
 			while (*format == '+' ||
-			       *format == ' ' || *format == '#' || *format == 'l' || *format == 'h')
+			*format == ' ' || *format == '#' || *format == 'l' || *format == 'h')
 			{
 				if (*format == '+')
 					print_sign = 1;
