@@ -259,6 +259,12 @@ int _printf(const char *format, ...)
 
 				count += print_reverse(str);
 			}
+			else if (*format == 'R')
+			{
+				char *str = va_arg(args, char *);
+
+				count += rot13(str);
+			}
 			else
 			{
 				_putchar('%');

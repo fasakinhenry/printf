@@ -16,4 +16,5 @@ int print_pointer(void *ptr);
 int print_non_printable(char c);
 void string_handler(char *str, int *count);
 int print_reverse(const char *str);
+int rot13(const char *str);
 #endif

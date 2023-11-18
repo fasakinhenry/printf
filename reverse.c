@@ -11,7 +11,7 @@ int print_reverse(const char *str)
 	int i;
 
 	if (str == NULL)
-		return 0;
+		return (0);
 	while (str[count] != '\0')
 		count++;
 	for (i = count - 1; i >= 0; i--)
