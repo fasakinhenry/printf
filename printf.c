@@ -4,6 +4,7 @@
  * print_number - This is a custom function to print numbers
  * @num: The number to be printed
  * @print_sign: Flag to indicate whether to print the sign (+, space)
+ * @print_hash: Handles printing of prefix when used
  * Return: value of the count
  */
 int print_number(int num, int print_sign, int print_hash)
@@ -29,15 +30,21 @@ int print_number(int num, int print_sign, int print_hash)
 			_putchar(' ');
 			count++;
 		}
-
 		unum = num;
 	}
-
 	if (unum / 10 != 0)
-	{
 		count += print_number(unum / 10, 0, print_hash);
-	}
 
+	if (print_hash)
+	{
+		if (unum != 0)
+		{
+			if (print_hash == 1 && (unum % 8 == 0 || unum % 16 == 0))
+				_putchar('0');
+			else if (print_hash == 2)
+				_putchar('0');
+		}
+	}
 	_putchar(unum % 10 + '0');
 	count++;
 
